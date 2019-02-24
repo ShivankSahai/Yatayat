@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom'
 import WelcomePage from './WelcomePage/main.js'
+import LoginPage from './LoginPage/main.js'
 
 class Router extends Component{
     render(){
@@ -10,11 +11,13 @@ class Router extends Component{
                     {!localStorage.getItem('yatayat_auth') &&
                         <Switch>
                             <Route path="/" exact component={WelcomePage} />
+                            <Route path="/login" exact component={LoginPage} />
                         </Switch>
                     }
                     {localStorage.getItem('yatayat_auth') &&
                         <Switch>
                             <Route path="/" exact component={WelcomePage} />
+                            <Route path="/login" exact component={LoginPage} />
                         </Switch>
                     }
                 </div>

@@ -1,14 +1,14 @@
 import React,{Component} from 'react'
 import Typography from '@material-ui/core/Typography'
 
-class WelcomePage extends Component{
+class LoginPage extends Component{
     render(){
         return(
             <div className="welcome_page_div">
-                <Typography onClick={()=>{window.location.href="/login"}} component="p">Welcome to Yatayat!!</Typography>
+                <Typography component="p">Login Page</Typography>
             </div>
         )
     }
 }
 
-export default WelcomePage
+export default LoginPage
