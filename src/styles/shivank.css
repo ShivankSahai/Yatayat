@@ -1,0 +1,190 @@
+body{
+    background:url('../bus.jpg');
+    
+    background-repeat:  no-repeat;
+    background-attachment: fixed;
+    background-size:auto;
+	height:100%;
+}
+
+.rounded{
+    margin-top:200px!important;
+    border-radius:5px!important;
+    padding:10px!important;
+    opacity:0.8!important;
+}
+
+.width_less{
+    width:30%!important;
+    margin:0 auto!important;
+}
+
+.width_little_less{
+    width:60%!important;
+    margin:0 auto!important;
+}
+
+.m_top{
+    margin-top:100px!important;
+}
+
+.m_left{
+    margin-left:10px!important;
+}
+
+.welcome_page_div,.login_main_div{
+    width:80%;
+    margin:250px auto;
+    text-align:center;
+}
+
+.signup_main_div{
+    width:80%;
+    margin:150px auto;
+    text-align:center;
+}
+
+.welcome_heading{
+    font-size:100px!important;
+    font-weight:bold!important;
+}
+
+.tagline{
+    margin-top:30px!important;
+    margin-bottom:50px!important;
+    font-weight:bold!important;
+    font-size:30px!important;
+}
+
+.user_btn{
+    margin:0 20px!important;
+    background-color:white!important;
+    color:blue!important;
+    border:3px solid blue!important;
+    height:50px!important;
+    width:300px!important;
+    border-radius:10px!important;
+}
+
+.user_btn:hover{
+    margin:0 20px!important;
+    background-color:blue!important;
+    color:white!important;
+}
+
+.login_btn{
+    color:white!important;
+    background-color: black!important;
+    padding:10px 30px!important;
+    margin:20px 0!important;
+    width:150px!important;
+}
+
+.signup_btn{
+    color:white!important;
+    background-color:blue!important;
+    padding:10px 30px!important;
+    margin:20px 0!important;
+    width:150px!important;
+}
+
+.hospital_info{
+    width:60%!important;
+    margin:50px auto!important;
+}
+
+.accidents_heading{
+    font-size:36px!important;
+    font-weight:bold!important;
+}   
+
+.red{
+    color:red!important;
+    font-weight:bold!important;
+}
+.w{
+    color:white!important;
+}
+
+.accident_paper{
+    padding:10px!important;
+    font-size:18px!important;
+    margin:30px auto!important;
+}
+
+.addr,.urg{
+    font-size:22px!important;
+}
+
+.center{
+    text-align:center!important;
+}
+
+.org_info{
+    margin-top:50px!important;
+}
+
+.user_view{
+    margin-top:250px!important;
+}
+
+.daily_options{
+    width:60%!important;
+    margin:0 auto!important;
+}
+
+.little_big{
+    font-size:20px!important;
+    font-weight:bold!important;
+}
+
+.or_big{
+    font-size:24px!important;
+    font-weight:bold!important;
+}
+
+.accident_div_down,.traffic_div_down,.daily_div_down{
+    margin-top:150px!important;
+    padding:30px 50px!important;
+}
+
+.bold{
+    font-weight:bold!important;
+}
+
+.display_none{
+    display:none!important;
+}
+
+.report_send_btn{
+    height:50px!important;
+    width:120px!important;
+}
+
+.High{
+    color:red!important;
+    font-weight:bold!important;
+}
+
+.Medium{
+    color:rgb(216, 216, 0)!important;
+    font-weight:bold!important;
+}
+
+.Low{
+    color:green!important;
+    font-weight:bold!important;
+}
+
+.tcn_heading{
+    background-color:white!important;
+    margin-top:50px!important;
+    padding:20px 0px!important;
+}
+
+@media screen and (max-width: 1024px){
+    body{
+        left: 50%;
+        margin-left: -512px;
+    }
+}
