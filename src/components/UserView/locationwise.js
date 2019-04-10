@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
 import axios from 'axios'
 import Geocode from "react-geocode";
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 Geocode.setApiKey("AIzaSyCEF1MgrRBaktN47f3Xf_sb1POSHnDunY0");
 
@@ -18,7 +19,9 @@ class LocationWise extends Component{
         data:'',
         best_bus:'',
         best_train:'',
-        best_metro:''
+        best_metro:'',
+        taking_location:'',
+        sending:''
     }
 
     handleChange = name => event => {
@@ -47,13 +50,17 @@ class LocationWise extends Component{
       
 
     fetchdaily=()=>{
+        this.setState({
+            sending:true
+        })
         axios.get('https://rocky-atoll-55276.herokuapp.com/daily',{},{
             headers:{
                 'Content-Type': 'application/json'
             }
         }).then((res)=>{
             this.setState({
-                data:res.data
+                data:res.data,
+                sending:false
             })
             let data=res.data[0]
             let l_bus=1000
@@ -108,6 +115,9 @@ class LocationWise extends Component{
     }
 
     take_location=()=>{
+        this.setState({
+            taking_location:true
+        })
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(this.showPosition);
         } else {
@@ -132,10 +142,16 @@ showPosition=(position)=> {
         }
     }).then((res)=>{
         this.setState({
-            address:res.data
+            address:res.data,
+            taking_location:false
         })
     })
 
+}
+
+logout=()=>{
+    localStorage.clear()
+    window.location.href="/"
 }
 
     render(){
@@ -149,10 +165,19 @@ showPosition=(position)=> {
         let flag2=0
         let flag3=0
         return(
+            <div>
+                <div className="police_appbar">
+                    <Typography component="p" className="yat_logo">YATAYAT</Typography>
+                    <Typography onClick={this.logout} component="p" className="logout_btn">Logout</Typography>
+                    <Typography onClick={()=>{window.location.href="/user/locationwise"}} component="p" className="logout_btn">Location based schedules</Typography>
+                    <Typography onClick={()=>{window.location.href="/user/daily"}} component="p" className="logout_btn">Daily Schedules</Typography>
+                    <Typography onClick={()=>{window.location.href="/user/accident"}} component="p" className="logout_btn">Accident</Typography>
+                    <Typography onClick={()=>{window.location.href="/user/traffic"}} component="p" className="logout_btn">Traffic</Typography>    
+            </div>
             <div className="main_div m_top">
                 <Paper className="rounded width_less">
                 <div className="center">
-                <Typography component="p" className="accidents_heading">Daily Schedules</Typography><br></br>
+                <Typography component="p" className="accidents_heading">Location Based Transport</Typography><br></br>
                 <Typography component="p" className="little_big">Enter Start</Typography>
                 <TextField
                 id="outlined-name"
@@ -186,17 +211,21 @@ showPosition=(position)=> {
                 fullWidth
                 /><br></br>
                 <Typography component="p" className="or_big">or</Typography><br></br>
-                <Button onClick={this.take_location} variant="contained" color="secondary">Take current location</Button>
+                {!this.state.taking_location && <Button onClick={this.take_location} variant="contained" color="secondary">Take current location</Button>}
+                {this.state.taking_location && <Button variant="outlined" color="secondary">Taking location<CircularProgress className="m_left" size={12} color="secondary" /></Button>}
                 <br></br><br></br>
-                <Button onClick={this.fetchdaily} variant="contained" color="primary">Find transport</Button>
+                {!this.state.sending && <Button className="report_send_btn" onClick={this.fetchdaily} variant="contained" color="primary">Send</Button>}
+                {this.state.sending && <Button className="report_send_btn" variant="outlined" color="primary">Sending<CircularProgress className="m_left" size={12} color="primary" /></Button>}
                 </div>
                 </Paper>
                 {
                     this.state.data && this.state.data.map((val,ind)=>(
                         <div className="results">
-                            <div className="daily_options">
                             <div>
-                            <Typography component="p" className="accidents_heading m_top w">Bus schedule</Typography>
+                            <div className="center tcn_heading">
+                                <Typography component="p" className="accidents_heading">Bus Schedule</Typography>
+                            </div>
+                            <div className="daily_options">
                             {
                                 val.bus.map((value,index)=>(
                                     <div>
@@ -214,8 +243,10 @@ showPosition=(position)=> {
                                             <Typography component="p" className="addr center">None</Typography>
                             </Paper>}
                             </div>
-                            <div>
-                            <Typography component="p" className="accidents_heading w">Train schedule</Typography>
+                            <div className="center tcn_heading">
+                                <Typography component="p" className="accidents_heading">Train Schedule</Typography>
+                            </div>
+                            <div className="daily_options">
                             {
                                 val.train.map((value,index)=>(
                                     <div>
@@ -232,8 +263,10 @@ showPosition=(position)=> {
                                             <Typography component="p" className="addr center">None</Typography>
                             </Paper>}
                             </div>
-                            <div>
-                            <Typography component="p" className="accidents_heading w">Metro schedule</Typography>
+                            <div className="center tcn_heading">
+                                <Typography component="p" className="accidents_heading">Metro Schedule</Typography>
+                            </div>
+                            <div className="daily_options">
                             {
                                 val.metro.map((value,index)=>(
                                     <div>
@@ -254,6 +287,7 @@ showPosition=(position)=> {
                         </div>
                     ))
                 }
+            </div>
             </div>
         )
     }

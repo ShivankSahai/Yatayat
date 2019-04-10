@@ -45,7 +45,7 @@ class LoginPage extends Component{
                     this.handleClick()
                     setTimeout(() => {
                         if(val.user_type=="user"){
-                            window.location.href="/user"
+                            window.location.href="/user/traffic"
                         }
                         else if(val.user_type=="police"){
                             window.location.href="/police"

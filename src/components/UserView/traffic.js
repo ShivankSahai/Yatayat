@@ -108,9 +108,23 @@ class TrafficReport extends Component{
         })
     }
 
+    logout=()=>{
+        localStorage.clear()
+        window.location.href="/"
+    }
+
     render(){
         const { vertical, horizontal, open } = this.state;
         return(
+            <div>
+                <div className="police_appbar">
+                    <Typography component="p" className="yat_logo">YATAYAT</Typography>
+                    <Typography onClick={this.logout} component="p" className="logout_btn">Logout</Typography>
+                    <Typography onClick={()=>{window.location.href="/user/locationwise"}} component="p" className="logout_btn">Location based schedules</Typography>
+                    <Typography onClick={()=>{window.location.href="/user/daily"}} component="p" className="logout_btn">Daily Schedules</Typography>
+                    <Typography onClick={()=>{window.location.href="/user/accident"}} component="p" className="logout_btn">Accident</Typography>
+                    <Typography onClick={()=>{window.location.href="/user/traffic"}} component="p" className="logout_btn">Traffic</Typography>    
+            </div>
             <div className="main_div center m_top">
             <Snackbar
           anchorOrigin={{ vertical, horizontal }}
@@ -168,6 +182,7 @@ class TrafficReport extends Component{
                 {!this.state.sending && <Button className="report_send_btn" onClick={this.send_message} variant="contained" color="primary">Send</Button>}
                 {this.state.sending && <Button className="report_send_btn" variant="outlined" color="primary">Sending<CircularProgress className="m_left" size={12} color="primary" /></Button>}
                 </Paper>
+            </div>
             </div>
         )
     }

@@ -10,8 +10,8 @@ body{
 .rounded{
     margin-top:200px!important;
     border-radius:5px!important;
-    padding:10px!important;
-    opacity:0.8!important;
+    padding:20px!important;
+    opacity:0.9!important;
 }
 
 .width_less{
@@ -94,7 +94,7 @@ body{
 }
 
 .accidents_heading{
-    font-size:36px!important;
+    font-size:26px!important;
     font-weight:bold!important;
 }   
 
@@ -161,6 +161,11 @@ body{
     width:120px!important;
 }
 
+.daily_show_btn{
+    height:50px!important;
+    width:200px!important;
+}
+
 .High{
     color:red!important;
     font-weight:bold!important;
@@ -176,10 +181,49 @@ body{
     font-weight:bold!important;
 }
 
+.Ambulance{
+    color:purple!important;
+    font-weight:bold!important;
+}
+
 .tcn_heading{
     background-color:white!important;
+    border-top:5px solid black!important;
+    border-bottom:5px solid black!important;
     margin-top:50px!important;
-    padding:20px 0px!important;
+    padding:10px 0px!important;
+}
+
+.bold{
+    font-weight:bold!important;
+}
+
+.pointer{
+    cursor:pointer!important;
+}
+
+.police_appbar{
+    border-bottom:5px solid black!important;
+    background-color:rgb(0, 140, 255)!important;
+}
+
+.yat_logo{
+    font-size:26px!important;
+    font-weight:bold!important;
+    color:white!important;
+    margin:10px 20px!important;
+}
+
+.logout_btn{
+    font-size:20px!important;
+    float:right!important;
+    cursor:pointer!important;
+    color:white!important;
+    margin:10px 20px!important;
+}
+
+.yat_logo,.logout_btn{
+    display:inline-block!important;
 }
 
 @media screen and (max-width: 1024px){

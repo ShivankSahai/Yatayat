@@ -35,6 +35,13 @@ class DriverView extends Component{
                 places:this.state.places2
             })
         }
+        let currentdate = new Date(); 
+        let datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
         window.open(`https://www.google.com/maps/dir/${a}/${b}`)
         axios.get(`https://maps.googleapis.com/maps/api/directions/json?origin=${a}&destination=${b}&key=AIzaSyCEF1MgrRBaktN47f3Xf_sb1POSHnDunY0`,{
             headers:{
@@ -45,7 +52,7 @@ class DriverView extends Component{
             this.setState({
                 showData:true
             })
-            axios.post('https://rocky-atoll-55276.herokuapp.com/traffic',{place:this.state.places,level: 'Ambulance Passing'},{
+            axios.post('https://rocky-atoll-55276.herokuapp.com/traffic',{time:datetime,place:this.state.places,level: 'Ambulance Passing'},{
             headers:{
                 'Content-Type': 'application/json'
             }
@@ -53,9 +60,18 @@ class DriverView extends Component{
         })
     }
 
+    logout=()=>{
+        localStorage.clear()
+        window.location.href="/"
+    }
+
     render(){
         return(
             <div className="main_div">
+            <div className="police_appbar">
+                    <Typography component="p" className="yat_logo">YATAYAT</Typography>
+                    <Typography onClick={this.logout} component="p" className="logout_btn">Logout</Typography>
+                </div>
                 <div className="main_div m_top">
                 <Paper className="rounded width_less">
                 <div className="center">
@@ -68,6 +84,7 @@ class DriverView extends Component{
                 onChange={this.handleChange('start')}
                 margin="normal"
                 variant="outlined"
+                fullWidth
                 /><br></br>
 
                 <Typography component="p" className="little_big">Enter destination</Typography>
@@ -78,6 +95,7 @@ class DriverView extends Component{
                 onChange={this.handleChange('destination')}
                 margin="normal"
                 variant="outlined"
+                fullWidth
                 /><br></br><br></br>
 
                 <Button onClick={this.alertAndShow} variant="contained" color="primary">Find path</Button>
