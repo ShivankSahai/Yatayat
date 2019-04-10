@@ -155,12 +155,6 @@ logout=()=>{
 }
 
     render(){
-        if(this.state.best_bus==''){
-            this.setState({
-                best_bus:'Volvo Blue',
-                best_train:'Chennai Express'
-            })
-        }
         let flag1=0
         let flag2=0
         let flag3=0

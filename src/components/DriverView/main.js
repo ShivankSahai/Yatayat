@@ -11,8 +11,6 @@ class DriverView extends Component{
         destination:'',
         data:'',
         showData:false,
-        places1:['Green Circle','Vevekananda Nagar','Gandhi Nagar','Old Katpadi'],
-        places2:['Gorbachev Road','Lee Road','Fleming Road','Curie Road'],
         places:[]
     }
 
@@ -25,16 +23,6 @@ class DriverView extends Component{
     alertAndShow=()=>{
         let a=this.state.start.split(' ').join('+')
         let b=this.state.destination.split(' ').join('+')
-        if(this.state.destination=='CMC Vellore'){
-            this.setState({
-                places:this.state.places1
-            })
-        }
-        else{
-            this.setState({
-                places:this.state.places2
-            })
-        }
         let currentdate = new Date(); 
         let datetime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
