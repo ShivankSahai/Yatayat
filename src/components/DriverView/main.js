@@ -11,7 +11,9 @@ class DriverView extends Component{
         destination:'',
         data:'',
         showData:false,
-        places:[]
+        places:[],
+        places1:['Gorbachev Road','Dharapedavedu','Thottapalayam'],
+        places2:['Gorbachev Road','Dharapedavedu','Thottapalayam']
     }
 
     handleChange = name => event => {
@@ -31,21 +33,21 @@ class DriverView extends Component{
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
         window.open(`https://www.google.com/maps/dir/${a}/${b}`)
-        axios.get(`https://maps.googleapis.com/maps/api/directions/json?origin=${a}&destination=${b}&key=AIzaSyCEF1MgrRBaktN47f3Xf_sb1POSHnDunY0`,{
-            headers:{
-                'Content-Type':'application/json'
-            }
-        }).then((res)=>{
-            console.log(res.data)
+        // axios.get(`https://maps.googleapis.com/maps/api/directions/json?origin=${a}&destination=${b}&key=AIzaSyCEF1MgrRBaktN47f3Xf_sb1POSHnDunY0`,{
+        //     headers:{
+        //         'Content-Type':'application/json'
+        //     }
+        // }).then((res)=>{
+        //     console.log(res.data)
             this.setState({
                 showData:true
             })
-            axios.post('https://rocky-atoll-55276.herokuapp.com/traffic',{time:datetime,place:this.state.places,level: 'Ambulance Passing'},{
+            axios.post('https://rocky-atoll-55276.herokuapp.com/traffic',{time:datetime,place:this.state.places1,level: 'Ambulance Passing'},{
             headers:{
                 'Content-Type': 'application/json'
             }
             })
-        })
+        // })
     }
 
     logout=()=>{
@@ -54,6 +56,7 @@ class DriverView extends Component{
     }
 
     render(){
+        console.log(this.state)
         return(
             <div className="main_div">
             <div className="police_appbar">

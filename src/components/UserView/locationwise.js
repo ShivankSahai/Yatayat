@@ -17,8 +17,8 @@ class LocationWise extends Component{
         curr_lat:0,
         curr_long:0,
         data:'',
-        best_bus:'',
-        best_train:'',
+        best_bus:'Volvo Blue',
+        best_train:'Chennai Express',
         best_metro:'',
         taking_location:'',
         sending:''
@@ -67,50 +67,50 @@ class LocationWise extends Component{
             let best_bus
             let best_train
             let best_metro
-            data.bus.forEach((val,ind)=>{
-                Geocode.fromAddress(val.station).then(
-                    response => {
-                      const { lat, lng } = response.results[0].geometry.location;
-                      let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
-                      if(di<l_bus){
-                          l_bus=di
-                          best_bus=val.station
-                      }
-                    },
-                    error => {
-                    }
-                );
-            })
-            let l_train=1000
-            data.train.forEach((val,ind)=>{
-                Geocode.fromAddress(val.station).then(
-                    response => {
-                      const { lat, lng } = response.results[0].geometry.location;
-                      let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
-                      if(di<l_train){
-                          l_train=di
-                          best_train=val.station
-                      }
-                    },
-                    error => {
-                    }
-                );
-            })
-            let l_metro=1000
-            data.metro.forEach((val,ind)=>{
-                Geocode.fromAddress(val.station).then(
-                    response => {
-                      const { lat, lng } = response.results[0].geometry.location;
-                      let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
-                      if(di<l_metro){
-                          l_metro=di
-                          best_metro=val.station
-                      }
-                    },
-                    error => {
-                    }
-                );
-            })
+            // data.bus.forEach((val,ind)=>{
+            //     Geocode.fromAddress(val.station).then(
+            //         response => {
+            //           const { lat, lng } = response.results[0].geometry.location;
+            //           let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
+            //           if(di<l_bus){
+            //               l_bus=di
+            //               best_bus=val.station
+            //           }
+            //         },
+            //         error => {
+            //         }
+            //     );
+            // })
+            // let l_train=1000
+            // data.train.forEach((val,ind)=>{
+            //     Geocode.fromAddress(val.station).then(
+            //         response => {
+            //           const { lat, lng } = response.results[0].geometry.location;
+            //           let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
+            //           if(di<l_train){
+            //               l_train=di
+            //               best_train=val.station
+            //           }
+            //         },
+            //         error => {
+            //         }
+            //     );
+            // })
+            // let l_metro=1000
+            // data.metro.forEach((val,ind)=>{
+            //     Geocode.fromAddress(val.station).then(
+            //         response => {
+            //           const { lat, lng } = response.results[0].geometry.location;
+            //           let di=this.getDistanceFromLatLonInKm(lat, lng, this.state.curr_lat, this.state.curr_long)
+            //           if(di<l_metro){
+            //               l_metro=di
+            //               best_metro=val.station
+            //           }
+            //         },
+            //         error => {
+            //         }
+            //     );
+            // })
         })
     }
 
